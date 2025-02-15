@@ -14,7 +14,8 @@
     "check-formats": "npm run prettier -- --list-different",
     "clean": "rm -rf node_modules coverage dist .nyc_output .next && npm cache clean --force",
     "validate": "yarn check-formats && yarn lint && yarn build",
-    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx)\""
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx)\"",
+    "docker:build": "docker build -t todo-web ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
