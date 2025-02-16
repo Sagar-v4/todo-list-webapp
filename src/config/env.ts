@@ -1,3 +1,3 @@
-export const URL = {
-  GATEWAY: String(process.env.API_GATEWAY),
+export const API = {
+  URL: String(process.env.API_URL),
 };

@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   output: "standalone",
   env: {
-    API_GATEWAY: process.env.API_GATEWAY,
+    API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
 };
 

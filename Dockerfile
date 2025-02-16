@@ -23,6 +23,9 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy the rest of the files
 COPY . .
 
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Run build with the preferred package manager
 RUN \
   if [ -f yarn.lock ]; then yarn build; \
@@ -35,7 +38,7 @@ RUN \
 FROM node:22-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Add nextjs user
 RUN addgroup --system --gid 1001 nodejs
@@ -56,8 +59,5 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 
 EXPOSE 3000
-
-ENV PORT=3000
-ENV API_GATEWAY=http://localhost:3001
 
 CMD ["node", "server.js"]
